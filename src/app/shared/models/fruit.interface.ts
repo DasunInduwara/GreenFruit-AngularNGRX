@@ -12,4 +12,5 @@ export interface IItem {
   image: string;
   nutrients: string[];
   quantity: number;
+  price: number;
 }
