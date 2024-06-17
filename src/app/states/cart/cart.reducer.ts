@@ -4,11 +4,20 @@ import { IItem } from '../../shared/models/fruit.interface';
 
 export interface CartState {
   fruits: IItem[];
+  totalPrice: number;
 }
 
 export const initialCartState: CartState = {
   fruits: [],
+  totalPrice: 0.0,
 };
+
+export function calculateTotalPrice(fruits: IItem[]) {
+  return fruits.reduce(
+    (total, fruit) => total + fruit.price * fruit.quantity,
+    0
+  );
+}
 
 export const cartReducer = createReducer(
   initialCartState,
@@ -17,6 +26,7 @@ export const cartReducer = createReducer(
     return {
       ...state,
       fruits: updatedList,
+      totalPrice: calculateTotalPrice(updatedList),
     };
   }),
 
@@ -33,6 +43,7 @@ export const cartReducer = createReducer(
     return {
       ...state,
       fruits: updatedList,
+      totalPrice: calculateTotalPrice(updatedList),
     };
   }),
 
@@ -49,6 +60,7 @@ export const cartReducer = createReducer(
     return {
       ...state,
       fruits: updatedList,
+      totalPrice: calculateTotalPrice(updatedList),
     };
   }),
 
@@ -58,6 +70,7 @@ export const cartReducer = createReducer(
     return {
       ...state,
       fruits: updatedList,
+      totalPrice: calculateTotalPrice(updatedList),
     };
   })
 );

@@ -1,0 +1,130 @@
+<div class="w-full px-2 pt-2">
+  <div
+    class="w-full border border-gray-500 bg-white shadow-md rounded-md px-1 py-1"
+  >
+    <div class="flex items-center">
+      <img
+        class="rounded-md"
+        width="100"
+        height="80"
+        [src]="item.image"
+        alt="image"
+      />
+      <div class="flex-grow ml-3 mr-3">
+        <div class="flex items-center justify-between">
+          <h2 class="font-semibold">{{ item.name }}</h2>
+          <button
+            (click)="handleItemRemove(item.id)"
+            class="rounded-full w-5 h-5 bg-red-200 flex items-center justify-center"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M17 12H7"
+                  stroke="#c20000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </button>
+        </div>
+        <!-- neutrients -->
+
+        @for (nutrient of item.nutrients; track $index) {
+        <span
+          class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 me-2"
+          >{{ nutrient.toLocaleUpperCase() }}</span
+        >
+        }
+
+        <!-- price and quentity section -->
+        <div class="flex items-center justify-between mt-1 mb-1">
+          <div class="flex items-center justify-center">
+            <!-- minus -->
+            <button
+              [disabled]="item.quantity <= 1 ? true : false"
+              (click)="handleDecrement(item.id)"
+              class="rounded-full w-6 h-6 p-1 bg-white border border-gray-500 flex justify-center items-center"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M6 12L18 12"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </button>
+            <!-- value -->
+
+            <div
+              class="ml-1 mr-1 flex items-center justify-center h-6 w-6 rounded-full bg-gray-300 border border-gray-300"
+            >
+              <span class="text-black font-bold text-sm">
+                {{ item.quantity }}
+              </span>
+            </div>
+
+            <!-- plus -->
+            <button
+              (click)="handleIncrement(item.id)"
+              class="rounded-full w-6 h-6 p-1 bg-white border border-gray-500 flex justify-center items-center"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M4 12H20M12 4V20"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </button>
+          </div>
+          <!-- price -->
+          <span class="text-green-950 font-semibold">{{
+            item.price * item.quantity | currency
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
