@@ -1,10 +1,12 @@
-<div class="bg-green-950 overscroll-x-none flex flex-col">
-  <app-header />
+<div class="bg-green-950 min-h-screen flex flex-col">
   <div class="flex mt-1 flex-1 divide-x divide-gray-400">
-    <div class="max-h-screen flex-2 overflow-auto">
+    <div class="flex-2">
+      <app-header />
       <app-fruits />
     </div>
-    <div class="flex-1"></div>
+    <div class="flex-1">
+      <app-cart />
+    </div>
   </div>
   <!-- <router-outlet /> -->
 </div>
