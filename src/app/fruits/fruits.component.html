@@ -1,5 +1,5 @@
 <div *ngIf="fruits$ | async as fruits" class="grid grid-cols-5 gap-2">
   <div *ngFor="let item of fruits.items">
-    <app-fruit-card [fruitData]="item" />
+    <app-fruit-card [fruitData]="item" (handleAdd)="addItemToCart($event)" />
   </div>
 </div>
