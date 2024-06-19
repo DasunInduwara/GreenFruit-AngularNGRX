@@ -20,13 +20,13 @@ export class CartCardComponent {
   @Input() item!: IItem;
   constructor(private store: Store<AppState>) {}
 
-  handleIncrement(itemId: number) {
+  public handleIncrement(itemId: number): void {
     this.store.dispatch(quantityIncrement({ itemId }));
   }
-  handleDecrement(itemId: number) {
+  public handleDecrement(itemId: number): void {
     this.store.dispatch(quantityDecrement({ itemId }));
   }
-  handleItemRemove(itemId: number) {
+  public handleItemRemove(itemId: number): void {
     this.store.dispatch(removeItem({ itemId }));
   }
 }

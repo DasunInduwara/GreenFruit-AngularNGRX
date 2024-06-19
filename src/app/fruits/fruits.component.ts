@@ -19,7 +19,7 @@ export class FruitsComponent {
 
   constructor(private store: Store<{ cart: { fruits: IItem[] } }>) {}
 
-  addItemToCart(item: IItem) {
+  public addItemToCart(item: IItem): void {
     this.store.dispatch(addToCart({ item }));
   }
 }
